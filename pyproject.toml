@@ -1,39 +1,52 @@
-[tool.poetry]
+[project]
 name = "pyopenbadges"
 version = "0.1.0"
 description = "Une librairie Python moderne pour la création, la validation et la gestion des badges numériques conformes à la spécification OpenBadge v3.0"
-authors = ["Your Name <your.email@example.com>"]
+authors = [{ name = "Your Name", email = "your.email@example.com" }]
+requires-python = ">=3.14,<4"
 readme = "README.md"
 license = "MIT"
-repository = "https://github.com/yourusername/pyopenbadges"
-documentation = "https://github.com/yourusername/pyopenbadges"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Topic :: Education",
     "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+    "pydantic>=2.0.0,<3",
+    "requests>=2.28.0,<3",
+    "email-validator>=2.0.0,<3",
+    "cryptography>=42.0.0,<43",
 ]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-pydantic = "^2.0.0"
-requests = "^2.28.0"
-email-validator = "^2.0.0"  # Pour la validation des EmailStr dans Pydantic
-cryptography = "^42.0.0"  # Pour les fonctionnalités cryptographiques
+[project.urls]
+Repository = "https://github.com/CoopCodeCommun/pyopenbadges"
+Documentation = "https://github.com/CoopCodeCommun/pyopenbadges"
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.0.0"
-pytest-cov = "^4.0.0"
-black = "^24.3.0"
-isort = "^5.12.0"
-mypy = "^1.0.0"
-flake8 = "^6.0.0"
-ipython = "^9.0.2"
+[dependency-groups]
+dev = [
+    "pytest>=7.0.0,<8",
+    "pytest-cov>=4.0.0,<5",
+    "black>=24.3.0,<25",
+    "isort>=5.12.0,<6",
+    "mypy>=1.0.0,<2",
+    "flake8>=6.0.0,<7",
+    "ipython>=9.0.2,<10",
+]
+
+[tool.uv]
+
+[tool.uv.build-backend]
+module-root = ""
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["uv_build>=0.9.21,<0.10.0"]
+build-backend = "uv_build"
 
 [tool.black]
 line-length = 88
